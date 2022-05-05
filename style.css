@@ -14,9 +14,15 @@
     --brand-green-light: #DCE9E2;
     --brand-beige: #FFFAF1;
 
+    --bg-light: #F7F9F9;
+
     --nav-height: 7.2rem;
 
     font-size: 62.5%;
+}
+
+html{
+  scroll-behavior: smooth;  
 }
 
 html, body{
@@ -30,6 +36,7 @@ body{
     text-align: center;
 
     overflow: overlay;
+    background-color: var(--bg-light);
 }
 
 .wrapper{
@@ -42,7 +49,47 @@ ul{
     list-style: none;
 }
 
-header::before{
+section{
+    padding-block: 10rem;
+}
+
+section header h4{
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.6rem;
+
+    font-size: 1.4rem;
+    line-height: 150%;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+section header h2{
+    font-size: 3rem;
+    line-height: 3.9rem;
+    color: var(--headline);
+}
+
+section header h1{
+    font-size: 3.4rem;
+    color: var(--headline);
+    line-height: 130%;
+    margin-bottom: 2.4rem;
+}
+
+section .content p{
+    color: var(--paragraph);
+    font-size: 1.6rem;
+    line-height: 150%;
+}
+
+/* ------------------------------HOME------------------------------ */
+
+#home{
+    padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before{
     content: "";
     width: 100%;
     height: calc(108rem + var(--nav-height));
@@ -54,24 +101,7 @@ header::before{
     z-index: -1;
 }
 
-header{
-    margin-top: calc(4.1rem + var(--nav-height));
-}
-
-header h1{
-    font-size: 3.4rem;
-    color: var(--headline);
-    line-height: 130%;
-    margin-bottom: 2.4rem;
-}
-
-header h4{
-    font-size: 1.4rem;
-    color: var(--primary-color);
-    margin-bottom: 1.6rem;
-}
-
-header p{
+#home p{
     color: var(--paragraph);
     font-size: 1.8rem;
     line-height: 150%;
@@ -79,7 +109,7 @@ header p{
     margin-bottom: 3.2rem;
 }
 
-header button{
+#home button{
     border: 0;
     border-radius: 4rem;
     padding: 1.6rem 3.2rem;
@@ -102,14 +132,14 @@ header button{
     margin-left: auto;
 }
 
-header img{
+#home img{
     width: 26.4rem;
     display: block;
     margin-inline: auto;
     object-position: 0 2rem;
 }
 
-.stats{
+#home .stats{
     width: 32.7rem;
 
     padding-block: 4rem;
@@ -127,20 +157,21 @@ header img{
 }
 
 
-.stat h3{
+#home .stat h3{
     font-size: 4.8rem;
     color: var(--headline);
     line-height: 130%;
     margin-bottom: 0.4rem;
 }
 
-.stat p{
+#home .stat p{
     color: var(--primary-color);
     margin: 0;
     font-size: 1.6rem;
     line-height: 150%;
 }
 
+/* ------------------------------NAVIGATION------------------------------ */
 
 nav{
     display: flex;
@@ -149,8 +180,9 @@ nav{
 
    position: fixed;
    top: 0;
-   left: 50%;
-   transform: translateX(-50%);
+   width: 100vw;
+
+   z-index: 100;
 }
 
 nav .wrapper{
@@ -161,10 +193,9 @@ nav .wrapper{
 
 nav.scroll{
     background-color: var(--primary-color);
-    width: 100vw;
 }
 
-nav.scroll svg:nth-child(1) path{
+nav.scroll .logo path{
     fill: white;
     
 }
@@ -181,14 +212,14 @@ nav button{
 
 }
 
-/* Menu Espandido */
+/* ------------------- Menu Espandido ------------------------- */
 
 body.menu-expanded{
     overflow: hidden;
 }
 
 body.menu-expanded > :not(nav) {
-    display: none;
+    visibility: hidden;
 }
 
 .menu,
@@ -204,6 +235,10 @@ body.menu-expanded .close-menu{
     visibility: visible;
 }
 
+.menu{
+    transform: translateY(50%);
+}
+
 body.menu-expanded .menu{
     position: fixed;
     top: 0;
@@ -214,11 +249,11 @@ body.menu-expanded .menu{
     height: 100vh;
 
     padding-top: var(--nav-height);
+
+    transition: transform 300ms;
+    transform: translateY(0);
 }
 
-body.menu-expanded nav{
-    position: relative;
-}
 
 .menu ul:first-child{
     display: flex;
@@ -274,4 +309,45 @@ body.menu-expanded .logo path{
 
 body.menu-expanded button path{
     stroke: white;
+}
+
+/* SERVICES */
+
+#services h2{
+    margin-bottom: 6rem;
+}
+
+#services .card{
+    padding: 2.4rem;
+    text-align: left;
+
+    background: #fff;
+    border: 1px solid var(--brand-green-light);
+    border-radius: .6rem;
+}
+
+#services .card h3{
+    margin-block: 1.6rem;
+}
+
+#services .cards{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+/* ------------------------ ABOUT ----------------------- */
+
+#about{
+    text-align: left;
+    background-color: var(--brand-beige);
+}
+
+#about h2{
+    margin-bottom: 2.4rem;
+}
+
+#about .content p{
+    margin-top: 2.4rem;
+    margin-bottom: 6rem;
 }
